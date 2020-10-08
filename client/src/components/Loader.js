@@ -3,18 +3,28 @@ import { Spinner } from "react-bootstrap";
 
 const Loader = () => {
   return (
-    <Spinner
-      animation="grow"
-      variant="dark"
+    <div
       style={{
-        width: "100px",
-        height: "100px",
-        margin: "auto",
-        display: "block",
+        height: "100vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <span className="sr-only">Please wait...</span>
-    </Spinner>
+      <Spinner
+        animation="grow"
+        variant="dark"
+        style={{
+          display: "block",
+          width: "100px",
+          height: "100px",
+          margin: "auto",
+        }}
+      >
+        <span className="sr-only">Please wait...</span>
+      </Spinner>
+    </div>
   );
 };
 

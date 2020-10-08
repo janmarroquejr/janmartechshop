@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message.js";
-import { addToCart } from "../actions/cartActions.js";
+import { addToCart, removeFromCart } from "../actions/cartActions.js";
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -27,7 +27,7 @@ const CartScreen = ({ match, location, history }) => {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-    console.log("remove");
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
@@ -83,7 +83,7 @@ const CartScreen = ({ match, location, history }) => {
                     <Button
                       type="button"
                       variant="danger"
-                      onClick={() => removeFromCartHandler}
+                      onClick={() => removeFromCartHandler(item.product)}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
@@ -116,6 +116,19 @@ const CartScreen = ({ match, location, history }) => {
                 onClick={checkoutHandler}
               >
                 Checkout
+              </Button>
+            </ListGroup.Item>
+            <ListGroup.Item
+              style={{
+                display: `${cartItems.length === 0 ? "none" : "block"}`,
+              }}
+            >
+              <Button
+                type="button"
+                className="btn-block"
+                onClick={() => history.push("/")}
+              >
+                Add more items
               </Button>
             </ListGroup.Item>
           </ListGroup>
