@@ -39,7 +39,7 @@ const CartScreen = ({ match, location, history }) => {
       <Col md={8}>
         <h1>Your Shopping Cart</h1>
         {cartItems.length === 0 ? (
-          <Message>
+          <Message dismissible={false}>
             Your cart is empty
             <Link to="/" className="float-right">
               Go back

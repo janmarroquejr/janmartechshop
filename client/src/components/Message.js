@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 
-const Message = ({ variant, children }) => {
+const Message = ({ variant, children, dismissible = true }) => {
   const [show, setShow] = useState(true);
 
   if (show) {
     return (
-      <Alert variant={variant} onClose={() => setShow(false)} dismissible>
+      <Alert
+        variant={variant}
+        onClose={() => setShow(false)}
+        dismissible={dismissible}
+      >
         {children}
       </Alert>
     );
