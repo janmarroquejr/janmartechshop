@@ -10,6 +10,7 @@ const Message = ({ variant, children, dismissible = true }) => {
         variant={variant}
         onClose={() => setShow(false)}
         dismissible={dismissible}
+        transition
       >
         {children}
       </Alert>
