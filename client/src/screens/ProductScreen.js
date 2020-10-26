@@ -18,6 +18,7 @@ import {
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 import Loader from "../components/Loader.js";
 import Message from "../components/Message.js";
+import Meta from "../components/Meta";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -68,6 +69,7 @@ const ProductScreen = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
@@ -85,9 +87,7 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
 
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-                <ListGroup.Item>
-                  Description: {product.description}
-                </ListGroup.Item>
+                <ListGroup.Item>{product.description}</ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>
